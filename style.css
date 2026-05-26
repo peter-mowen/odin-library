@@ -29,10 +29,17 @@
   --saturn: #f8e5be;
   --gold-rush: #c6a878;
   --black-panther: #464039;
+  --black-panther-80: rgba(70, 64, 57, 80%);
+
+  --border-radius: 10px;
 }
 
 * {
   font-family: 'Cinzel', serif;
+}
+
+button {
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 body {
@@ -76,6 +83,10 @@ nav a {
   background-image: url("img/peter-herrmann-aT88kga0g_M-unsplash.jpg");
   background-size: contain;
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .background-image-citation {
@@ -96,4 +107,37 @@ nav a {
 .library-container {
   grid-area: library-container;
   background-color: var(--gold-rush);
+}
+
+.add-book-overlay {
+  background-color: var(--black-panther-80);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: var(--border-radius);
+}
+
+.add-book-title {
+  color: var(--saturn);
+  font-size: xx-large;
+  line-height: 1;
+}
+
+.add-book-subtitle {
+  font-family: 'Source San 3', sans-serif;
+  font-size: large;
+  color: var(--saturn);
+}
+
+.add-book-overlay button {
+  background-color: transparent;
+  color: var(--saturn);
+  border: solid var(--saturn) 1px;
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  font-size: large;
 }
