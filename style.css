@@ -31,14 +31,12 @@
   --black-panther: #464039;
   --black-panther-80: rgba(70, 64, 57, 80%);
 
+  --light-text-color: var(--saturn);
+
   --border-radius: 10px;
 }
 
 * {
-  font-family: 'Cinzel', serif;
-}
-
-button {
   font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -70,12 +68,14 @@ nav li {
 nav a {
   display: flex;
   gap: 1rem;
+
+  font-family: 'Cinzel', serif;
+  color: var(--light-text-color);
   font-size: x-large;
   font-weight: bold;
   align-items: center;
 
   text-decoration: none;
-  color: var(--saturn);
 }
 
 .add-book-container {
@@ -90,7 +90,6 @@ nav a {
 }
 
 .background-image-citation {
-  font-family: 'Source Sans 3', sans-serif;
   font-size: x-small;
   color: var(--gold-rush);
   position: absolute;
@@ -100,8 +99,7 @@ nav a {
 
 .background-image-citation a {
   text-decoration: none;
-  color: var(--saturn);
-  font-family: inherit;
+  color: var(--light-text-color);
 }
 
 .library-container {
@@ -121,21 +119,23 @@ nav a {
 }
 
 .add-book-title {
-  color: var(--saturn);
+  font-family: 'Cinzel', serif;
+  color: var(--light-text-color);
   font-size: xx-large;
+  font-weight: bolder;
   line-height: 1;
 }
 
 .add-book-subtitle {
-  font-family: 'Source San 3', sans-serif;
   font-size: large;
-  color: var(--saturn);
+  font-weight: bold;
+  color: var(--light-text-color);
 }
 
 .add-book-overlay button {
   background-color: transparent;
-  color: var(--saturn);
-  border: solid var(--saturn) 1px;
+  color: var(--light-text-color);
+  border: solid var(--light-text-color) 1px;
   padding: 5px 10px;
   border-radius: var(--border-radius);
   font-weight: bold;
