@@ -27,6 +27,7 @@
 
 :root {
   --saturn: #f8e5be;
+  --gold-rush: #c6a878;
   --black-panther: #464039;
 }
 
@@ -34,9 +35,20 @@
   font-family: 'Cinzel', serif;
 }
 
+body {
+  display: grid;
+  grid-template-rows: auto 2fr 3fr;
+  grid-template-areas:
+    "navbar"
+    "add-book-container"
+    "library-container";
+  height: 100vh;
+}
+
 nav {
   padding: 20px 0px;
   background-color: var(--black-panther);
+  grid-area: navbar;
 }
 
 nav > ul {
@@ -57,4 +69,31 @@ nav a {
 
   text-decoration: none;
   color: var(--saturn);
+}
+
+.add-book-container {
+  grid-area: add-book-container;
+  background-image: url("img/peter-herrmann-aT88kga0g_M-unsplash.jpg");
+  background-size: contain;
+  position: relative;
+}
+
+.background-image-citation {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: x-small;
+  color: var(--gold-rush);
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+.background-image-citation a {
+  text-decoration: none;
+  color: var(--saturn);
+  font-family: inherit;
+}
+
+.library-container {
+  grid-area: library-container;
+  background-color: var(--gold-rush);
 }
