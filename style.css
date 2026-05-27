@@ -219,6 +219,26 @@ nav a {
   cursor: pointer;
 }
 
+.add-book-modal-last-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-book-modal button {
+  background-color: transparent;
+  color: var(--dark-background-color);
+  font-weight: bold;
+  border: solid var(--dark-background-color) 1px;
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+}
+
+.add-book-modal button:hover,
+.add-book-modal button:active {
+  background-color: var(--dark-background-color);
+  color: var(--light-text-color);
+}
+
 .card {
   border: solid var(--dark-background-color) 1px;
   padding: 20px;
