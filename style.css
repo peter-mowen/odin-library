@@ -55,6 +55,10 @@ body {
   height: 100vh;
 }
 
+h2 {
+  font-family: 'Cinzel', serif;
+}
+
 nav {
   padding: 20px 0px;
   background-color: var(--black-panther);
@@ -160,6 +164,61 @@ nav a {
   color: var(--dark-background-color);
 }
 
+ /* The Modal (background) */
+.add-book-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.add-book-modal-content {
+  position: relative;
+  background-color: var(--gold-rush);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid --dark-background-color;
+  width: 80%; /* Could be more or less, depending on screen size */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: var(--border-radius);
+}
+
+.add-book-modal-title {
+  color: var(--dark-background-color);
+}
+
+.add-book-form-label {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The Close Button */
+.add-book-modal-close {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  color: var(--dark-background-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.add-book-modal-close:hover,
+.add-book-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .card {
   border: solid var(--dark-background-color) 1px;
   padding: 20px;
@@ -179,7 +238,7 @@ nav a {
   font-size: x-large;
 }
 
-.card hr {
+hr {
   border-color: var(--dark-background-color);
 }
 

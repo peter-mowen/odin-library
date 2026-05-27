@@ -22,8 +22,34 @@
     <div class="add-book-overlay">
       <div class="add-book-title">Add Books!</div>
       <div class="add-book-subtitle">Books will appear below as cards</div>
-      <button>Add Book</button>
+      <button id="add-book-btn">Add Book</button>
     </div>
+    <dialog id="add-book-dialog" class="add-book-modal">
+      <form action="" class="add-book-modal-content">
+        <span class="add-book-modal-close">&times;</span>
+        <h2 class="add-book-modal-title">Book Details</h2>
+        <hr>
+        <label for="book-title" class="add-book-form-label">
+          Title
+          <input type="text" name="book-title" id="book-title">
+        </label>
+        <label for="book-author" class="add-book-form-label">
+          Author
+          <input type="text" name="book-author" id="book-author">
+        </label>
+        <label for="book-num-of-pages" class="add-book-form-label">
+          Number of Pages
+          <input type="tel" name="book-num-of-pages" id="book-num-of-pages">
+        </label>
+        <div>
+          <label class="card-switch">
+            <input type="checkbox" checked>
+            <span class="card-slider round"></span>
+          </label>
+          <span>I have read this</span>
+        </div>
+      </form>
+    </dialog>
     <div class="background-image-citation">
       Photo by
       <a href="https://unsplash.com/@tama66?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
