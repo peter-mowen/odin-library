@@ -186,6 +186,7 @@ nav a {
   padding: 20px;
   border: 1px solid --dark-background-color;
   width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 25rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
