@@ -291,7 +291,7 @@ hr {
 }
 
 /* The switch - the box around the slider */
-.card-switch {
+.switch {
   position: relative;
   display: inline-block;
   width: 30px;
@@ -301,7 +301,7 @@ hr {
 }
 
 /* Hide default HTML checkbox */
-.card-switch input {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
