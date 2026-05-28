@@ -46,3 +46,81 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+/**
+ * 
+  <div class="card">
+    <div class="card-title">Wind and Truth</div>
+    <hr>
+    <div class="card-author">Brandon Sanderson</div>
+    <div class="card-number-of-pages">1344 pages</div>
+    <div class="card-have-read-container">
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="card-slider round"></span>
+      </label>
+      <span>I have read this</span>
+    </div>
+    <button type="button"></button>
+  </div>
+ * 
+ * @param {*} book 
+ */
+
+function createCard(book) {
+  let title = document.createElement('div');
+  title.classList.add("card-title");
+  title.textContent = book.title;
+
+  let hr = document.createElement('hr');
+  
+  let author = document.createElement('div');
+  author.classList.add('card-author');
+  author.textContent = book.author;
+
+  let numOfPages = document.createElement('div');
+  numOfPages.classList.add('card-number-of-pages');
+  numOfPages.textContent = book.pages;
+
+  let haveReadContainer = document.createElement('div');
+  haveReadContainer.classList.add('card-have-read-container');
+
+  let haveReadSwitch = document.createElement('label');
+  haveReadSwitch.classList.add('switch');
+  haveReadContainer.appendChild(haveReadSwitch);
+  
+  let haveReadCheckBox = document.createElement('input');
+  haveReadCheckBox.type = 'checkbox';
+  haveReadCheckBox.checked = book.haveRead;
+  haveReadSwitch.appendChild(haveReadCheckBox);
+
+  let slider = document.createElement('span');
+  slider.classList.add('card-slider', 'round');
+  haveReadSwitch.appendChild(slider);
+
+  let haveReadText = document.createElement('span');
+  haveReadText.textContent = `I have ${book.haveRead ? '' : 'not'} read this`;
+  haveReadContainer.appendChild(haveReadText);
+
+  let deleteButton = document.createElement('button');
+  deleteButton.type = 'button';
+
+  let card = document.createElement('div');
+  card.classList.add('card');
+  card.appendChild(title);
+  card.appendChild(hr)
+  card.appendChild(author);
+  card.appendChild(numOfPages);
+  card.appendChild(haveReadContainer);
+  card.appendChild(deleteButton);
+
+  let libraryContainer = document.getElementsByClassName('library-container')[0];
+
+  if (libraryContainer) {
+    libraryContainer.appendChild(card);
+  }
+}
+
+myLibrary.forEach(element => {
+  createCard(element);
+});
