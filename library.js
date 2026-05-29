@@ -19,6 +19,7 @@ arcanumUnbounded = new Book("Arcanum Unbounded", "Brandon Sanderson", 672, false
 theSunlitMan = new Book("The Sunlit Man", "Brandon Sanderson", 400, false);
 
 // Fill the library with sample books
+//TODO: make hash map of books instead of array
 myLibrary = [windAndTruth, theMismeasureOfMan, aChristmasCarol, commonSenseInvesting, arcanumUnbounded, theSunlitMan];
 
 // Get the modal
@@ -66,6 +67,7 @@ function checkboxChanged(event) {
   }
 
   haveReadText.textContent = buildHaveReadText(event.target.checked);
+  // TODO: Lookup book in the library and update its state.
 }
 
 function createCard(book) {
@@ -94,6 +96,7 @@ function createCard(book) {
   haveReadCheckBox.type = 'checkbox';
   haveReadCheckBox.checked = book.haveRead;
   haveReadCheckBox.classList.add('switch-input');
+  // TODO: Add UUID as data to this input
   haveReadCheckBox.addEventListener('change', checkboxChanged);
   haveReadSwitch.appendChild(haveReadCheckBox);
 
@@ -108,6 +111,7 @@ function createCard(book) {
 
   let deleteButton = document.createElement('button');
   deleteButton.type = 'button';
+  // TODO: Implement delete functionality
 
   let card = document.createElement('div');
   card.classList.add('card');
@@ -128,3 +132,5 @@ function createCard(book) {
 myLibrary.forEach(element => {
   createCard(element);
 });
+
+//TODO: implement adding books to library using form
