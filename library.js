@@ -73,13 +73,29 @@ function checkboxChanged(event) {
 
   if (!haveReadText) {
     console.error('Expected "have-read-text" element in container!');
+    return
   }
 
-  haveReadText.textContent = buildHaveReadText(event.target.checked);
-  // TODO: Lookup book in the library and update its state.
+  const haveRead = event.target.checked;
+
+  haveReadText.textContent = buildHaveReadText(haveRead);
+
+  const uuid = event.target.dataset.uuid;
+  if (!uuid) {
+    console.error('Failed to find uuid!');
+    return;
+  }
+
+  let book = myLibrary[uuid];
+  if (!book) {
+    console.error(`No book associated with uuid = ${uuid}`);
+    return
+  }
+
+  book.haveRead = haveRead;
 }
 
-function createCard(book) {
+function createCard(uuid, book) {
   let title = document.createElement('div');
   title.classList.add("card-title");
   title.textContent = book.title;
@@ -105,7 +121,7 @@ function createCard(book) {
   haveReadCheckBox.type = 'checkbox';
   haveReadCheckBox.checked = book.haveRead;
   haveReadCheckBox.classList.add('switch-input');
-  // TODO: Add UUID as data to this input
+  haveReadCheckBox.dataset.uuid = uuid;
   haveReadCheckBox.addEventListener('change', checkboxChanged);
   haveReadSwitch.appendChild(haveReadCheckBox);
 
