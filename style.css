@@ -280,7 +280,7 @@ hr {
   background-image: url("icons/trash-can.svg");
 }
 
-.card-have-read-container {
+.have-read-container {
   position: absolute;
   bottom: 10px;
   left: 20px;

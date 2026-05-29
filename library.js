@@ -47,25 +47,26 @@ window.onclick = function(event) {
   }
 }
 
-/**
- * 
-  <div class="card">
-    <div class="card-title">Wind and Truth</div>
-    <hr>
-    <div class="card-author">Brandon Sanderson</div>
-    <div class="card-number-of-pages">1344 pages</div>
-    <div class="card-have-read-container">
-      <label class="switch">
-        <input type="checkbox" checked>
-        <span class="card-slider round"></span>
-      </label>
-      <span>I have read this</span>
-    </div>
-    <button type="button"></button>
-  </div>
- * 
- * @param {*} book 
- */
+function buildHaveReadText(haveRead) {
+  return `I have ${haveRead ? '' : 'not'} read this`;
+}
+
+function checkboxChanged(event) {
+  const container = event.target.closest('.have-read-container');
+
+  if (!container) {
+    console.error("Expect checkbox to be inside container!");
+    return;
+  }
+
+  const haveReadText = container.querySelector('.have-read-text');
+
+  if (!haveReadText) {
+    console.error('Expected "have-read-text" element in container!');
+  }
+
+  haveReadText.textContent = buildHaveReadText(event.target.checked);
+}
 
 function createCard(book) {
   let title = document.createElement('div');
@@ -83,7 +84,7 @@ function createCard(book) {
   numOfPages.textContent = book.pages;
 
   let haveReadContainer = document.createElement('div');
-  haveReadContainer.classList.add('card-have-read-container');
+  haveReadContainer.classList.add('have-read-container');
 
   let haveReadSwitch = document.createElement('label');
   haveReadSwitch.classList.add('switch');
@@ -92,6 +93,8 @@ function createCard(book) {
   let haveReadCheckBox = document.createElement('input');
   haveReadCheckBox.type = 'checkbox';
   haveReadCheckBox.checked = book.haveRead;
+  haveReadCheckBox.classList.add('switch-input');
+  haveReadCheckBox.addEventListener('change', checkboxChanged);
   haveReadSwitch.appendChild(haveReadCheckBox);
 
   let slider = document.createElement('span');
@@ -99,7 +102,8 @@ function createCard(book) {
   haveReadSwitch.appendChild(slider);
 
   let haveReadText = document.createElement('span');
-  haveReadText.textContent = `I have ${book.haveRead ? '' : 'not'} read this`;
+  haveReadText.textContent = buildHaveReadText(book.haveRead);
+  haveReadText.classList.add('have-read-text');
   haveReadContainer.appendChild(haveReadText);
 
   let deleteButton = document.createElement('button');
