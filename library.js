@@ -7,7 +7,6 @@ function Book(title, author, pages, haveRead) {
   this.author = author;
   this.pages = pages;
   this.haveRead = haveRead;
-  this.uuid = crypto.randomUUID();
 }
 
 // Sample books with page numbers from Wikipedia
@@ -18,9 +17,19 @@ commonSenseInvesting = new Book("The Little Book of Common Sense Investing, 2nd 
 arcanumUnbounded = new Book("Arcanum Unbounded", "Brandon Sanderson", 672, false);
 theSunlitMan = new Book("The Sunlit Man", "Brandon Sanderson", 400, false);
 
+myLibrary = {};
+
+function addBookToLibrary(book) {
+  myLibrary[crypto.randomUUID()] = book;
+}
+
 // Fill the library with sample books
-//TODO: make hash map of books instead of array
-myLibrary = [windAndTruth, theMismeasureOfMan, aChristmasCarol, commonSenseInvesting, arcanumUnbounded, theSunlitMan];
+addBookToLibrary(windAndTruth);
+addBookToLibrary(theMismeasureOfMan);
+addBookToLibrary(aChristmasCarol);
+addBookToLibrary(commonSenseInvesting);
+addBookToLibrary(arcanumUnbounded);
+addBookToLibrary(theSunlitMan);
 
 // Get the modal
 var modal = document.getElementById("add-book-dialog");
@@ -129,8 +138,8 @@ function createCard(book) {
   }
 }
 
-myLibrary.forEach(element => {
-  createCard(element);
-});
+for (const [uuid, book] of Object.entries(myLibrary)) {
+  createCard(uuid, book);
+}
 
 //TODO: implement adding books to library using form
