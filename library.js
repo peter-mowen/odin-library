@@ -65,6 +65,10 @@ function reportUnknownUUID(uuid) {
   console.error(`No book associated with uuid = ${uuid}`);
 }
 
+function reportNoUUID() {
+  console.error('Failed to find uuid!');
+}
+
 function checkboxChanged(event) {
   const container = event.target.closest('.have-read-container');
 
@@ -86,7 +90,7 @@ function checkboxChanged(event) {
 
   const uuid = event.target.dataset.uuid;
   if (!uuid) {
-    console.error('Failed to find uuid!');
+    reportNoUUID();
     return;
   }
 
@@ -97,6 +101,25 @@ function checkboxChanged(event) {
   }
 
   book.haveRead = haveRead;
+}
+
+function deleteBook(event) {
+  const card = event.target.closest('.card');
+
+  if (!card) {
+    console.error("Expect delete button to be inside card!");
+    return;
+  }
+
+  const uuid = event.currentTarget.dataset.uuid;
+
+  if (!uuid) {
+    reportNoUUID();
+  }
+
+  card.remove();
+
+  delete myLibrary[uuid];
 }
 
 function createCard(uuid) {
@@ -147,7 +170,8 @@ function createCard(uuid) {
 
   let deleteButton = document.createElement('button');
   deleteButton.type = 'button';
-  // TODO: Implement delete functionality
+  deleteButton.dataset.uuid = uuid;
+  deleteButton.addEventListener('click', deleteBook);
 
   let card = document.createElement('div');
   card.classList.add('card');
