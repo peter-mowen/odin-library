@@ -61,6 +61,10 @@ function buildHaveReadText(haveRead) {
   return `I have ${haveRead ? '' : 'not'} read this`;
 }
 
+function reportUnknownUUID(uuid) {
+  console.error(`No book associated with uuid = ${uuid}`);
+}
+
 function checkboxChanged(event) {
   const container = event.target.closest('.have-read-container');
 
@@ -88,14 +92,21 @@ function checkboxChanged(event) {
 
   let book = myLibrary[uuid];
   if (!book) {
-    console.error(`No book associated with uuid = ${uuid}`);
+    reportUnknownUUID(uuid);
     return
   }
 
   book.haveRead = haveRead;
 }
 
-function createCard(uuid, book) {
+function createCard(uuid) {
+  const book = myLibrary[uuid];
+
+  if (!book) {
+    reportUnknownUUID(uuid);
+    return;
+  }
+
   let title = document.createElement('div');
   title.classList.add("card-title");
   title.textContent = book.title;
@@ -154,8 +165,6 @@ function createCard(uuid, book) {
   }
 }
 
-for (const [uuid, book] of Object.entries(myLibrary)) {
-  createCard(uuid, book);
-}
+Object.keys(myLibrary).forEach(uuid => { createCard(uuid); });
 
 //TODO: implement adding books to library using form
